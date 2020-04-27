@@ -22,10 +22,16 @@ public class ConexaoDB {
     }
 
     public static Connection getConexao() throws SQLException {
-        String dbURL = "jdbc:derby://localhost:1527/javasports;create=true";
+        /*String dbURL = "jdbc:derby://localhost:1527/javasports;create=true";
         String user = "root";
         String password = "root";
         return DriverManager.getConnection(dbURL, user, password);
+*/
+        String url = "jdbc:mysql://localhost:3306/xnexus";
+        String user = "root";
+        String password = "";
+
+        return DriverManager.getConnection(url, user, password);
     }
 
 }

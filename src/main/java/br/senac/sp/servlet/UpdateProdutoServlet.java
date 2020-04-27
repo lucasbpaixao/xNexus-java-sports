@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Raul
  */
-public class ProdutoServlet extends HttpServlet{
+public class UpdateProdutoServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,7 +31,7 @@ public class ProdutoServlet extends HttpServlet{
             throws ServletException, IOException {
         
         
-        //String codigo = request.getParameter("Código");
+        String codigo = request.getParameter("Código");
         String nomeProduto = request.getParameter("Nome do produto");
         String marca = request.getParameter("Marca");
         String preco = request.getParameter("Preço");
@@ -47,7 +46,7 @@ public class ProdutoServlet extends HttpServlet{
         produto.setQuantidade(Integer.parseInt(quantidade));
         
         //Aqui já vai chamar o DAO para cadastrar
-        boolean cadastrou = ProdutoDao.cadastrarProduto(produto);
+        boolean cadastrou = ProdutoDao.alterarProduto(produto,Integer.parseInt(codigo));
         PrintWriter out = response.getWriter();
 
         String url = "";

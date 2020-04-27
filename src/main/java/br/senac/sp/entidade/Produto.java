@@ -17,13 +17,13 @@ public class Produto {
     private double preco;
     private int quantidade;
     
-    public Produto(int codigo, String nomeProduto, String marca, double preco, int quantidade){
+    /*public Produto(int codigo, String nomeProduto, String marca, double preco, int quantidade){
         this.codigo = codigo;
         this.nomeProduto = nomeProduto;
         this.marca = marca;
         this.preco = preco;
         this.quantidade = quantidade;
-        }
+        }*/
 
     public int getCodigo() {
         return codigo;

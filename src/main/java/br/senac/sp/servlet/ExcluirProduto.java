@@ -9,9 +9,11 @@ import br.senac.sp.dao.ProdutoDao;
 import br.senac.sp.entidade.Produto;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Raul
  */
-public class ProdutoServlet extends HttpServlet{
+public class ExcluirProduto extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -30,28 +32,13 @@ public class ProdutoServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        //String codigo = request.getParameter("Código");
-        String nomeProduto = request.getParameter("Nome do produto");
-        String marca = request.getParameter("Marca");
-        String preco = request.getParameter("Preço");
-        String quantidade = request.getParameter("Quantidade");
-        
+        String codigo = request.getParameter("Código");       
 
-        Produto produto = new Produto();
-        
-        produto.setNomeProduto(nomeProduto);
-        produto.setMarca(marca);
-        produto.setPreco(Double.parseDouble(preco));
-        produto.setQuantidade(Integer.parseInt(quantidade));
-        
-        //Aqui já vai chamar o DAO para cadastrar
-        boolean cadastrou = ProdutoDao.cadastrarProduto(produto);
+        boolean excluiu = ProdutoDao.excluirProduto(Integer.parseInt(codigo));
         PrintWriter out = response.getWriter();
 
         String url = "";
-        if (cadastrou) {
+        if (excluiu) {
             url = "/sucesso.jsp";
         } else {
             url = "/erro.jsp";
@@ -66,4 +53,5 @@ public class ProdutoServlet extends HttpServlet{
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
 }
