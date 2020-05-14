@@ -5,6 +5,7 @@
  */
 package br.senac.sp.entidade;
 
+import br.senac.sp.dto.ItemCarrinhoDto;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,3 +1,9 @@
+<%-- 
+    Document   : estoque
+    Created on : 13/05/2020, 20:20:23
+    Author     : eders
+--%>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -74,26 +80,25 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                        <a href="#"><img src="img/notification/4.jpg" alt="" /></a>
-                        <h2>Java <span class="min-dtn">Sports</span></h2>
+                        <a href="index.jsp"><h2>Java Sports</h2></a>
+                        
                     </div>
                 </div>
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
                     <nav class="sidebar-nav left-sidebar-menu-pro">
                         <ul class="metismenu" id="menu1">
                             <li class="active">
-                                <a class="has-arrow" href="index.html">
+                                <a class="has-arrow" href="index.jsp">
                                        <i class="icon nalika-home icon-wrap"></i>
                                        <span class="mini-click-non">Cadastros</span>
                                     </a>
-                                    <ul class="submenu-angle" aria-expanded="true">
+                                   <ul class="submenu-angle" aria-expanded="true">
+                                    <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
+                                    <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
+                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                    <li><a title="Cadastrar Filiais" href="CadastroFilialServlet?action=listarFilial"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
 
-                                      <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
-                                    <li><a title="Cadastrar Produto" href="cadastrarProdutos.html"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>                                   
-                                     <li><a title="Cadastrar Filiais" href="filial.jsp"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
-
-                                  </ul>
+                                </ul>
                             </li>
                                     
                                     <li id="removable">
@@ -189,7 +194,7 @@
                                 
                                     <th>Id</th>
                                     <th>Nome do produto</th>
-                                    <th>PreÃ§o</th>
+                                    <th>Preço</th>
                                     <th>Quantidade</th>
                                     
                                 </thead>
@@ -204,7 +209,7 @@
 									<li class="page-item"><a class="page-link" href="#">1</a></li>
 									<li class="page-item"><a class="page-link" href="#">2</a></li>
 									<li class="page-item"><a class="page-link" href="#">3</a></li>
-									<li class="page-item"><a class="page-link" href="#">PrÃ³ximo</a></li>
+									<li class="page-item"><a class="page-link" href="#">Próximo</a></li>
 								</ul>
                             </div>
                         </div>

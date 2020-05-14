@@ -18,7 +18,18 @@ async function armazenaValor() {
 
 async function carregaProduto() {
     try {
-        var listaProdutos = await fetch('http://localhost:8080/xNexus-java-sports/EstoqueProdutoServelet');
+        var host = window.location.host;
+        var protocol = window.location.protocol;
+        var url = '';
+
+        if (host[host.length - 1] == "/") {
+            url = protocol + "//" + host + "xNexus-java-sports/EstoqueProdutoServlet";
+
+        } else {
+            url = protocol + "//" + host + "/xNexus-java-sports/EstoqueProdutoServlet";
+        }
+
+        var listaProdutos = await fetch(url);
         return listaProdutos.text();
 
     } catch (error) {

@@ -87,28 +87,29 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                        <a href="#"><img src="img/notification/4.jpg" alt="" /></a>
-                        <h2>Java <span class="min-dtn">Sports</span></h2>
+                       <a href="index.jsp"><h2>Java Sports</h2></a>
+                        
                     </div>
                 </div>
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
                     <nav class="sidebar-nav left-sidebar-menu-pro">
                         <ul class="metismenu" id="menu1">
                             <li class="active">
-                                <a class="has-arrow" href="index.html">
+                                <a class="has-arrow" href="index.jsp">
                                     <i class="icon nalika-home icon-wrap"></i>
                                     <span class="mini-click-non">Cadastros</span>
                                 </a>
                                 <ul class="submenu-angle" aria-expanded="true">
                                     <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
-                                    <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProdutos"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
-                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>                                 
-                                    <li><a title="Cadastrar Filiais" href="filial.jsp"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
+                                    <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
+                                    <li><a title="Cadastrar Filiais" href="CadastroFilialServlet?action=listarFilial"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+
                                 </ul>
                             </li>
 
                             <li id="removable">
-                                <a class="has-arrow" href="estoque.html" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
+                                <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
 
                             </li>
                         </ul>
@@ -209,24 +210,33 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" disabled>
+                                                                <input required="true"  type="text" class="form-control" placeholder="Código" name="codigo" id="txtCodigo" readonly="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Nome do produto" name="nomeProduto" id="txtNome">
+                                                                <input required="true" type="text" class="form-control" placeholder="Nome do produto" name="nomeProduto" id="txtNome">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Marca" name="marca" id="txtMarca">
+                                                                <input required="true" type="text" class="form-control" placeholder="Marca" name="marca" id="txtMarca">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
+                                                               <input required="true" type="number" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
+                                                                    <input required="true" type="number" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
+
+                                                                <input required="true" type="number" class="form-control" placeholder="Preço" name="preco" id="txtPreco">
                                                             </div>
+                                                            <div class="input-group mg-b-pro-edt">
+                                                                <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
+                                                                <input required="true" type="number" class="form-control" placeholder="Quantidade" name="quantidade" id="txtQuantidade">
+
+                                                            </div>
+                                                            
+                                                            <input type="text" name="action" id="action" hidden="true">
 
                                                         </div>
                                                     </div>
@@ -245,9 +255,9 @@
                                             <div class="row">
                                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                     <div class="text-center custom-pro-edt-ds">
-                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnSalvar">Salvar</button>
-                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnAlterar" disabled="true">Alterar</button>
-                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light" id="btnLimpar">Limpar</button>
+                                                        <button type="submit"  class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnSalvar">Salvar</button>
+                                                        <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10" id="btnAlterar" disabled="true">Alterar</button>
+                                                        <button type="button" class="btn btn-ctl-bt waves-effect waves-light" id="btnLimpar" onclick="limpar()">Limpar</button>
 
                                                     </div>
 
@@ -313,7 +323,9 @@
                                             
                                             
                                             <script>
+                                                
                                                 function preencher(id2){
+                                                    document.getElementById("action").value = "alterar";
                                                    
                                                     let id = document.getElementById("id"+id2);
                                                     let nome = document.getElementById("nome"+id2);
@@ -321,16 +333,22 @@
                                                     let preco = document.getElementById("preco"+id2);
                                                     let quantidade = document.getElementById("quantidade"+id2);
                                                     
-                                                    document.getElementById("txtCodigo").value = id.textContent;
-                                                    document.getElementById("txtNome").value = nome.textContent;
-                                                    document.getElementById("txtMarca").value = marca.textContent;
-                                                    document.getElementById("txtPreco").value = preco.textContent;
-                                                    document.getElementById("txtQuantidade").value = quantidade.textContent;
+                                                    document.getElementById("txtCodigo").value = id.textContent.trim();
+                                                    document.getElementById("txtNome").value = nome.textConten.trim()t;
+                                                    document.getElementById("txtMarca").value = marca.textContent.trim();
+                                                    document.getElementById("txtPreco").value = preco.textContent.trim();
+                                                    document.getElementById("txtQuantidade").value = quantidade.textContent.trim();
                                                     
                                                     document.getElementById("btnSalvar").disabled = true;
                                                     document.getElementById("btnAlterar").disabled = false;
                                                 }
-                    
+                                                
+                                                function limpar(){
+                                                    document.getElementById("txtNome").value = "";
+                                                    document.getElementById("txtMarca").value = "";
+                                                    document.getElementById("txtPreco").value = "";
+                                                    document.getElementById("txtQuantidade").value = "";
+                                                }
                                             </script>
                                         </div>
                                     </div>

@@ -38,9 +38,13 @@ public class CadastroProdutoServlet extends HttpServlet {
             boolean excliu = ProdutoDao.excluirProduto(codigo);
             String url = "";
             if (excliu) {
+                request.setAttribute("msgSucesso", "Produto excluido com sucesso.");
+                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
                 url = "/sucesso.jsp";
             } else {
                 url = "/erro.jsp";
+                request.setAttribute("msgErro", "Não foi possivel excluir o produto.");
+                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
             }
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
@@ -58,27 +62,59 @@ public class CadastroProdutoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String action = request.getParameter("action");
 
-        //String codigo = request.getParameter("codigo");
-        String nomeProduto = request.getParameter("nomeProduto");
-        String marca = request.getParameter("marca");
-        String preco = request.getParameter("preco");
-        String quantidade = request.getParameter("quantidade");
+        if (action.equalsIgnoreCase("alterar")) {
+            String codigo = request.getParameter("codigo");
+            
+            String nomeProduto = request.getParameter("nomeProduto");
+            String marca = request.getParameter("marca");
+            String preco = request.getParameter("preco");
+            String quantidade = request.getParameter("quantidade");
+            
+            Produto produto = new Produto(nomeProduto, marca, Double.parseDouble(preco), Integer.parseInt(quantidade));
 
-        Produto produto = new Produto(nomeProduto, marca, Long.parseLong(preco), Integer.parseInt(quantidade));
+            boolean cadastrou = ProdutoDao.alterarProduto(produto, Integer.parseInt(codigo));
+            PrintWriter out = response.getWriter();
 
-        boolean cadastrou = ProdutoDao.cadastrarProduto(produto);
-        PrintWriter out = response.getWriter();
+            String url = "";
+            if (cadastrou) {
+                request.setAttribute("msgSucesso", "Produto alterado com sucesso.");
+                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
+                url = "/sucesso.jsp";
+            } else {
+                url = "/erro.jsp";
+                request.setAttribute("msgErro", "Não foi possivel alterar o produto.");
+                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
+            }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+            dispatcher.forward(request, response);
+        } else if (action.equalsIgnoreCase("")) {
 
-        String url = "";
-        if (cadastrou) {
-            url = "/sucesso.jsp";
-        } else {
-            url = "/erro.jsp";
+            //String codigo = request.getParameter("codigo");
+            String nomeProduto = request.getParameter("nomeProduto");
+            String marca = request.getParameter("marca");
+            String preco = request.getParameter("preco");
+            String quantidade = request.getParameter("quantidade");
+
+            Produto produto = new Produto(nomeProduto, marca, Double.parseDouble(preco), Integer.parseInt(quantidade));
+
+            boolean cadastrou = ProdutoDao.cadastrarProduto(produto);
+            PrintWriter out = response.getWriter();
+
+            String url = "";
+            if (cadastrou) {
+                request.setAttribute("msgSucesso", "Produto cadastro com sucesso.");
+                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
+                url = "/sucesso.jsp";
+            } else {
+                url = "/erro.jsp";
+                request.setAttribute("msgErro", "Não foi possivel cadasrar o produto.");
+                request.setAttribute("forward", "CadastroProdutoServlet?action=listarProduto");
+            }
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+            dispatcher.forward(request, response);
         }
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
-        dispatcher.forward(request, response);
-
     }
 
     @Override

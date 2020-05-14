@@ -47,14 +47,14 @@ public class ProdutoDao {
         Connection connection;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "UPDATE produto SET nome = ?,marca = ?,preco = ?,quantidade = ? WHERE idProduto = ?";
+            String sql = "UPDATE produto SET nome = ?,marca = ?,preco = ?,quantidade = ? WHERE ID_PRODUTO = ?";
             PreparedStatement PreparedStatement = connection.prepareStatement(sql);
 
             PreparedStatement.setString(1, produto.getNomeProduto());
             PreparedStatement.setString(2, produto.getMarca());
             PreparedStatement.setLong(3, (long) produto.getPreco());
             PreparedStatement.setInt(4, (int) produto.getQuantidade());
-            PreparedStatement.setInt(4, codigo);
+            PreparedStatement.setInt(5, codigo);
             PreparedStatement.execute();
             alterou = true;
         } catch (SQLException ex) {
@@ -70,7 +70,7 @@ public class ProdutoDao {
         boolean excluiu = false;
         try {
             connection = ConexaoDB.getConexao();
-            String sql = "delete  from produto where idproduto = ?";
+            String sql = "delete  from produto where ID_PRODUTO = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, codigo);
             preparedStatement.execute();
@@ -91,7 +91,7 @@ public class ProdutoDao {
             connection = ConexaoDB.getConexao();
 
             pstmt = connection.prepareStatement(
-                    "SELECT * FROM produto ORDER BY idproduto");
+                    "SELECT * FROM produto ORDER BY ID_PRODUTO");
 
             rs = pstmt.executeQuery();
 
@@ -101,7 +101,7 @@ public class ProdutoDao {
 
                 Produto produto = new Produto();
 
-                produto.setCodigo(rs.getInt("idproduto"));
+                produto.setCodigo(rs.getInt("ID_PRODUTO"));
                 produto.setNomeProduto(rs.getString("nome"));
                 produto.setMarca(rs.getString("marca"));
                 produto.setPreco(rs.getDouble("preco"));

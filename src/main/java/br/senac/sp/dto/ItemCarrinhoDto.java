@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.senac.sp.entidade;
+package br.senac.sp.dto;
 
 /**
  *
@@ -21,6 +21,7 @@ public class ItemCarrinhoDto {
     public ItemCarrinhoDto(int idItemCarrinho, int idProduto, String nome, String marca, int quantidade, double preco) {
         this.idItemCarrinho = idItemCarrinho;
         this.idProduto = idProduto;
+        this.nome = nome;
         this.marca = marca;
         this.quantidade = quantidade;
         this.preco = preco;
@@ -81,6 +82,11 @@ public class ItemCarrinhoDto {
 
     public void setValorTotalItem(double valorTotalItem) {
         this.valorTotalItem = valorTotalItem;
+    }
+
+    @Override
+    public String toString() {
+        return "ItemCarrinhoDto{" + "idItemCarrinho=" + idItemCarrinho + ", idProduto=" + idProduto + ", nome=" + nome + ", marca=" + marca + ", quantidade=" + quantidade + ", preco=" + preco + ", valorTotalItem=" + valorTotalItem + '}';
     }
     
     

@@ -16,12 +16,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author oz500
- */
-@WebServlet(name = "RelatorioClienteServelet", urlPatterns = {"/RelatorioClienteServelet"})
-public class RelatorioClienteServelet extends HttpServlet {
+@WebServlet(name = "RelatorioProdutoServlet", urlPatterns = {"/RelatorioProdutoServlet"})
+public class RelatorioProdutoServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -29,13 +25,14 @@ public class RelatorioClienteServelet extends HttpServlet {
         Gson gson = new Gson();
 
         PrintWriter rs = response.getWriter();
-        List relatorio = RelatorioDAO.mostrarRelatorioCliente();
+        List relatorio = RelatorioDAO.gerarRelatorioProduto();
         if (relatorio != null) {
             String json = gson.toJson(relatorio);
             rs.print(json);
-        } else {
+        }else{
             rs.print(false);
         }
+
     }
 
     @Override

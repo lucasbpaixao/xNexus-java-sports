@@ -34,7 +34,7 @@ public class EstoqueDAO {
             
             connection = ConexaoDB.getConexao();
             
-            stmt = connection.prepareStatement("SELECT * FROM produto ORDER BY idproduto");
+            stmt = connection.prepareStatement("SELECT * FROM produto ORDER BY ID_PRODUTO");
             
             resultSet = stmt.executeQuery();
             
@@ -42,7 +42,7 @@ public class EstoqueDAO {
                 
                 Estoque estoque = new Estoque();
                 
-                estoque.setIdProduto(resultSet.getInt("idproduto"));
+                estoque.setIdProduto(resultSet.getInt("ID_PRODUTO"));
                 estoque.setNomeProduto(resultSet.getString("nome"));
                 estoque.setMarcaProduto(resultSet.getString("marca"));
                 estoque.setPrecoProduto(resultSet.getDouble("preco"));

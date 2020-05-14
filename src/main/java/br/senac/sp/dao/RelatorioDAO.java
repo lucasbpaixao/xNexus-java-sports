@@ -36,7 +36,7 @@ public class RelatorioDAO {
 
             connection = ConexaoDB.getConexao();
 
-            stmt = connection.prepareStatement("select filial.ID_FILIAL as idfilial, filial.NOME as nome, sum(venda.TOTAL) as total from filial inner join venda on filial.ID_FILIAL = venda.ID_FILIAL group by filial.ID_FILIAL, filial.NOME order by filial.ID_FILIAL");
+            stmt = connection.prepareStatement("select filial.ID_FILIAL, filial.NOME as nome, sum(venda.TOTAL) as total from filial inner join venda on filial.ID_FILIAL = venda.ID_FILIAL group by filial.ID_FILIAL, filial.NOME order by filial.ID_FILIAL");
 
             resultSet = stmt.executeQuery();
 
@@ -44,7 +44,7 @@ public class RelatorioDAO {
 
                 RelatorioFilial relatorio = new RelatorioFilial();
 
-                relatorio.setId(resultSet.getInt("idfilial"));
+                relatorio.setId(resultSet.getInt("ID_FILIAL"));
                 relatorio.setNome(resultSet.getString("nome"));
                 relatorio.setTotal(resultSet.getDouble("total"));
 
@@ -72,7 +72,7 @@ public class RelatorioDAO {
 
             connection = ConexaoDB.getConexao();
 
-            stmt = connection.prepareStatement("select cliente.ID_CLIENTE as idcliente, cliente.NOME as nome, cliente.SOBRENOME as sobrenome, sum(venda.TOTAL) total from cliente inner join venda on cliente.ID_CLIENTE = venda.ID_CLIENTE group by cliente.ID_CLIENTE, cliente.NOME, cliente.SOBRENOME order by cliente.ID_CLIENTE");
+            stmt = connection.prepareStatement("select cliente.ID_CLIENTE, cliente.NOME as nome, cliente.SOBRENOME as sobrenome, sum(venda.TOTAL) total from cliente inner join venda on cliente.ID_CLIENTE = venda.ID_CLIENTE group by cliente.ID_CLIENTE, cliente.NOME, cliente.SOBRENOME order by cliente.ID_CLIENTE");
 
             resultSet = stmt.executeQuery();
 
@@ -80,7 +80,7 @@ public class RelatorioDAO {
 
                 RelatorioCliente relatorioCliente = new RelatorioCliente();
 
-                relatorioCliente.setId(resultSet.getInt("idcliente"));
+                relatorioCliente.setId(resultSet.getInt("ID_CLIENTE"));
                 relatorioCliente.setNome(resultSet.getString("nome"));
                 relatorioCliente.setSobrenome(resultSet.getString("sobrenome"));
                 relatorioCliente.setTotal(resultSet.getDouble("total"));
@@ -109,7 +109,8 @@ public class RelatorioDAO {
 
             connection = ConexaoDB.getConexao();
 
-            stmt = connection.prepareStatement("select produto.IDPRODUTO as idproduto, produto.NOME as nome, sum(carrinho.QUANTIDADE) as total from produto inner join carrinho on produto.IDPRODUTO = carrinho.ID_PRODUTO group by produto.IDPRODUTO, produto.NOME order by produto.IDPRODUTO");
+            stmt = connection.prepareStatement("select produto.ID_PRODUTO, produto.NOME as nome, sum(carrinho.QUANTIDADE) as total from produto inner join carrinho on produto.ID_PRODUTO = carrinho.ID_PRODUTO group by produto.ID_PRODUTO,produto.NOME order by produto.ID_PRODUTO");
+
 
             resultSet = stmt.executeQuery();
 
@@ -117,7 +118,7 @@ public class RelatorioDAO {
 
                 RelatorioProduto relatorioProduto = new RelatorioProduto();
 
-                relatorioProduto.setId(resultSet.getInt("idproduto"));
+                relatorioProduto.setId(resultSet.getInt("ID_PRODUTO"));
                 relatorioProduto.setNome(resultSet.getString("nome"));
                 relatorioProduto.setTotal(resultSet.getDouble("total"));
 

@@ -3,7 +3,7 @@
     Created on : 07/05/2020, 19:02:57
     Author     : Lucas
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -83,15 +83,15 @@
                 </div>
                 <div class="nalika-profile">
                     <div class="profile-dtl">
-                        <a href="#"><img src="img/notification/4.jpg" alt="" /></a>
-                        <h2>Java <span class="min-dtn">Sports</span></h2>
+                        <a href="index.jsp"><h2>Java Sports</h2></a>
+                        
                     </div>
                 </div>
                 <div class="left-custom-menu-adp-wrap comment-scrollbar">
                     <nav class="sidebar-nav left-sidebar-menu-pro">
                         <ul class="metismenu" id="menu1">
                             <li class="active">
-                                <a class="has-arrow" href="index.html">
+                                <a class="has-arrow" href="index.jsp">
                                     <i class="icon nalika-home icon-wrap"></i>
                                     <span class="mini-click-non">Cadastros</span>
                                 </a>
@@ -99,13 +99,13 @@
                                     <li><a title="Cadastrar Clientes" href="CadastroClienteServlet?action=listarCliente"><span class="mini-sub-pro">Cadastrar Clientes</span></a></li>
                                     <li><a title="Cadastrar Produto" href="CadastroProdutoServlet?action=listarProduto"><span class="mini-sub-pro">Cadastrar Produtos</span></a></li>
                                     <li><a title="Cadastrar Vendas" href="VendasServlet?action=listarVendas"><span class="mini-sub-pro">Cadastrar Vendas</span></a></li>
-                                    <li><a title="Cadastrar Filiais" href="filial.jsp"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
+                                    <li><a title="Cadastrar Filiais" href="CadastroFilialServlet?action=listarFilial"><span class="mini-sub-pro">Cadastrar Filiais</span></a></li>
 
                                 </ul>
                             </li>
 
                             <li id="removable">
-                                <a class="has-arrow" href="estoque.html" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
+                                 <a class="has-arrow" href="estoque.jsp" aria-expanded="false"><i class="icon nalika-new-file icon-wrap"></i> <span class="mini-click-non">Estoque</span></a>
 
                             </li>
                         </ul>
@@ -206,44 +206,45 @@
                                                         <div class="review-content-section">
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Id da filial" name="Id" disabled>
+                                                                <input type="text" class="form-control" placeholder="Id da filial" name="Id" readonly="true" id="ID">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Nome da filial" name="NomeFilial">
+                                                                <input type="text" class="form-control" placeholder="Nome da filial" name="NomeFilial" id="NOME" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-edit" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Cep" name="CEP">
+                                                                <input type="Number" class="form-control" placeholder="Cep" name="CEP" id="CEP" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="fa fa-usd" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Pais" name="Pais">
+                                                                <input type="text" class="form-control" placeholder="Pais" name="Pais" id="PAIS" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Cidade" name="Cidade">
+                                                                <input type="text" class="form-control" placeholder="Cidade" name="Cidade" id="CIDADE"  required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Uf" name="UF">
+                                                                <input type="text" class="form-control" placeholder="Uf" name="UF" id="UF" required="true" maxlength="2">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Bairro" name="Bairro">
+                                                                <input type="text" class="form-control" placeholder="Bairro" name="Bairro" id="BAIRRO" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Rua" name="Rua">
+                                                                <input type="text" class="form-control" placeholder="Rua" name="Rua" id="RUA" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Número" name="Numero">
+                                                                <input type="text" class="form-control" placeholder="Número" name="Numero" id="NUMERO" required="true">
                                                             </div>
                                                             <div class="input-group mg-b-pro-edt">
                                                                 <span class="input-group-addon"><i class="icon nalika-favorites" aria-hidden="true"></i></span>
-                                                                <input type="text" class="form-control" placeholder="Complemento" name="Complemento">
+                                                                <input type="text" class="form-control" placeholder="Complemento" name="Complemento" id="COMPLEMENTO">
                                                             </div>
+                                                            <input type="text" name="action" id="action" hidden="true">
 
                                                         </div>
                                                     </div>
@@ -251,8 +252,10 @@
                                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <div class="text-center custom-pro-edt-ds">
                                                                 <button type="submit" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Salvar</button>
-                                                                <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
-
+                                                                
+                                                                <button type="submit" class="btn btn-ctl-bt waves-effect waves-light">Alterar</button>
+                                                                <button type="button" onClick="limpar()"
+                                                        class="btn btn-ctl-bt waves-effect waves-light">Limpar</button>
                                                             </div>
 
                                                         </div>
@@ -286,98 +289,96 @@
                                 <div class="product-status-wrap">
                                     <h4>Lista de filiais cadastradas</h4>
 
-                                    <table>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Nome</th>
-                                            <th>CEP</th>
-                                            <th>Número</th>
-                                            <th>Telefone</th>
-                                            <th>Ação</th>
+                                    <table onload="CadastroFilialServlet" method="GET">
+                                                <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Nome</th>
+                                                    <th>bairro</th>
+                                                    <th>cep</th>
+                                                    <th>pais</th>
+                                                    <th>rua</th>
+                                                    <th>complemento</th>
+                                                    <th>numero</th>
+                                                    <th>uf</th>
+                                                    <th>cidade</th>
+                                                </tr>
+                                                </thead>
+                                                
+                                                
+                                                <tbody>
+                                                    <c:forEach items="${filiais}" var="filial">
+                                                        <tr id="${filial.id}">
 
-                                        </tr>
-                                        <tr>
+                                                            <td id="id${filial.id}"><c:out value="${filial.id}"/></td>
+                                                            <td id="nome${filial.id}"><c:out value="${filial.nome}"/></td>
+                                                            <td id="bairro${filial.id}"><c:out value="${filial.bairro}"/></td>
+                                                            <td id="cep${filial.id}"><c:out value="${filial.cep}"/></td>
+                                                            <td id="pais${filial.id}"><c:out value="${filial.pais}"/></td>
+                                                            <td id="rua${filial.id}"><c:out value="${filial.rua}"/></td>
+                                                            <td id="complemento${filial.id}"><c:out value="${filial.complemento}"/></td>
+                                                            <td id="numero${filial.id}"><c:out value="${filial.numero}"/></td>
+                                                            <td id="uf${filial.id}"><c:out value="${filial.uf}"/></td>
+                                                            <td id="cidade${filial.id}"><c:out value="${filial.cidade}"/></td>
+                                                            <td>
+                                                                <button data-toggle="tooltip" title="Preencher" onclick="preencher(${filial.id})"class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+                                                                <button data-toggle="tooltip" title="Excluir" onclick = "javascript:window.location='CadastroFilialServlet?action=excluir&id=${filial.id}'"class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                                            </td>
 
-                                            <td>1</td>
-                                            <td>Filial 1</td>
-                                            <td>111111</td>
-                                            <td>212</td>
-                                            <td>444444444</td>
-                                            <td>
-                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </tbody>
 
-                                            <td>2</td>
-                                            <td>Filial 2</td>
-                                            <td>111111</td>
-                                            <td>212</td>
-                                            <td>444444444</td>
-                                            <td>
-                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
+                                            </table>
+                                    
+                                    <script>
+                                                function preencher(id2){
+                                                   
+                                                    let id = document.getElementById("id"+id2);
+                                                    let nome = document.getElementById("nome"+id2);
+                                                    let bairro = document.getElementById("bairro"+id2);
+                                                    let cep = document.getElementById("cep"+id2);
+                                                    let pais = document.getElementById("pais"+id2);
+                                                    let rua = document.getElementById("rua"+id2);
+                                                    let complemento = document.getElementById("complemento"+id2);
+                                                    let numero = document.getElementById("numero"+id2);
+                                                    let uf = document.getElementById("uf"+id2);
+                                                    let cidade = document.getElementById("cidade"+id2);
+                                                    
+                                                    document.getElementById("ID").value = id.textContent;
+                                                    document.getElementById("NOME").value = nome.textContent.trim();
+                                                    document.getElementById("BAIRRO").value = bairro.textContent.trim();
+                                                    document.getElementById("CEP").value = cep.textContent.trim();
+                                                    document.getElementById("PAIS").value = pais.textContent.trim();
+                                                    document.getElementById("RUA").value = rua.textContent.trim();
+                                                    document.getElementById("COMPLEMENTO").value = complemento.textContent.trim();
+                                                    document.getElementById("NUMERO").value = numero.textContent.trim();
+                                                    document.getElementById("UF").value = uf.textContent.trim();
+                                                    document.getElementById("CIDADE").value = cidade.textContent.trim();
+                                                    
+                                                    document.getElementById("action").value = "alterar";
+                                                }
+                    
+                                            </script>
+                                            
+                                            <script>
+                                                    function limpar() {
 
-                                            <td>3</td>
-                                            <td>Filial 3</td>
-                                            <td>111111</td>
-                                            <td>212</td>
-                                            <td>444444444</td>
-                                            <td>
-                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
+                                                    document.getElementById("ID").value = "";
+                                                    document.getElementById("NOME").value = "";
+                                                    document.getElementById("BAIRRO").value = "";
+                                                    document.getElementById("CEP").value = "";
+                                                    document.getElementById("PAIS").value = "";
+                                                    document.getElementById("RUA").value = "";
+                                                    document.getElementById("COMPLEMENTO").value = "";
+                                                    document.getElementById("NUMERO").value = "";
+                                                    document.getElementById("UF").value = "";
+                                                    document.getElementById("CIDADE").value = "";
 
-                                            <td>4</td>
-                                            <td>Filial 4</td>
-                                            <td>111111</td>
-                                            <td>212</td>
-                                            <td>444444444</td>
-                                            <td>
-                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
 
-                                            <td>5</td>
-                                            <td>Filial 5</td>
-                                            <td>111111</td>
-                                            <td>212</td>
-                                            <td>444444444</td>
-                                            <td>
-                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-
-                                            <td>6</td>
-                                            <td>Filial 6</td>
-                                            <td>111111</td>
-                                            <td>212</td>
-                                            <td>444444444</td>
-                                            <td>
-                                                <button data-toggle="tooltip" title="Edit" class="pd-setting-ed"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-                                                <button data-toggle="tooltip" title="Trash" class="pd-setting-ed"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <div class="custom-pagination">
-                                        <ul class="pagination">
-                                            <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">Próximo</a></li>
-                                        </ul>
-                                    </div>
+                                                    }
+                                                </script>
+                                    
                                 </div>
                             </div>
                         </div>

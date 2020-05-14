@@ -38,6 +38,8 @@ public class CadastroClienteServlet extends HttpServlet {
             } else {
                 url = "/erro.jsp";
             }
+            request.setAttribute("msgSucesso", "Cliente Excluido com sucesso");
+            request.setAttribute("forward", "/xNexus-java-sports/CadastroClienteServlet?action=listarCliente");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
         }
@@ -49,14 +51,21 @@ public class CadastroClienteServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher(forward);
             view.forward(request, response);
         }
+
     }
 
-        @Override
-        protected void doPost
-        (HttpServletRequest request, HttpServletResponse response)
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-            //int id = Integer.parseInt(request.getParameter("id"));
+        String forward = "";
+      
+        String action = request.getParameter("action");
+
+        if (action.equalsIgnoreCase("alterar")) {
+            
+            forward = "cliente.jsp";
+            int id = Integer.parseInt(request.getParameter("id").trim());
             String nome = request.getParameter("nome");
             String sobrenome = request.getParameter("sobrenome");
             String dataNascimento = request.getParameter("dataNascimento");
@@ -65,7 +74,9 @@ public class CadastroClienteServlet extends HttpServlet {
             String sexo = request.getParameter("sexo");
 
             Cliente cliente = new Cliente();
-
+            
+            
+            cliente.setId(id);
             cliente.setNome(nome);
             cliente.setSobrenome(sobrenome);
             cliente.setDataNascimento(dataNascimento);
@@ -73,25 +84,58 @@ public class CadastroClienteServlet extends HttpServlet {
             cliente.setTelefone(telefone);
             cliente.setSexo(sexo);
 
-            boolean cadastrou = ClienteDAO.cadastrarCliente(cliente);
+            boolean alterou = ClienteDAO.alterarCliente(cliente);
             PrintWriter out = response.getWriter();
 
             String url = "";
-            if (cadastrou) {
+            if (alterou) {
                 url = "/sucesso.jsp";
             } else {
                 url = "/erro.jsp";
             }
+            request.setAttribute("msgSucesso", "Cliente Alterado com Sucesso");
+            request.setAttribute("forward", "/xNexus-java-sports/CadastroClienteServlet?action=listarCliente");
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
             dispatcher.forward(request, response);
 
-        }
-
-        @Override
-        public String getServletInfo
+        }else{
         
-            () {
-        return "Short description";
-        }// </editor-fold>
+        String nome = request.getParameter("nome");
+        String sobrenome = request.getParameter("sobrenome");
+        String dataNascimento = request.getParameter("dataNascimento");
+        String cpf = request.getParameter("cpf");
+        String telefone = request.getParameter("telefone");
+        String sexo = request.getParameter("sexo");
+
+        Cliente cliente = new Cliente();
+
+        cliente.setNome(nome);
+        cliente.setSobrenome(sobrenome);
+        cliente.setDataNascimento(dataNascimento);
+        cliente.setCpf(cpf);
+        cliente.setTelefone(telefone);
+        cliente.setSexo(sexo);
+
+        boolean cadastrou = ClienteDAO.cadastrarCliente(cliente);
+        PrintWriter out = response.getWriter();
+
+        String url = "";
+        if (cadastrou) {
+            url = "/sucesso.jsp";
+        } else {
+            url = "/erro.jsp";
+        }
+        request.setAttribute("msgSucesso", "Cliente Cadastrado com Sucesso");
+        request.setAttribute("forward", "/xNexus-java-sports/CadastroClienteServlet?action=listarCliente");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(url);
+        dispatcher.forward(request, response);
 
     }
+    }
+
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}
